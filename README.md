@@ -343,6 +343,6 @@ yolov13n-hrnet-dcvn-fall-detection/
 
 
 
-* 邮箱：\[作者邮箱，待发表时补充]
+* 邮箱：chenyicheng@huuc.edu.cn
 
 * GitHub Issue：直接在本仓库提交 Issue，将在 1–3 个工作日内回复。
