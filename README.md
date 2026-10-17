@@ -1,13 +1,13 @@
-# YOLOv13-N-HRNet-DCVN-for-Student-Fall-Detection
+# DHRNet-YOLOv13: A Novel Deep Learning Model for Fall Detection in University Physical Education
 
-> 官方 PyTorch 实现 | 论文处于投刊阶段，标题：《Context-Aware Deep Learning for Fall Detection of College Students in Physical Education Activities》
+> 官方 PyTorch 实现 | 论文处于投刊阶段，标题：《DHRNet-YOLOv13: A Novel Deep Learning Model for Fall Detection in University Physical Education》
 > 提出融合 HRNet 高分辨率表征与 DCVN 多尺度上下文增强的实时检测模型，实现大学体育课复杂场景下站立与跌倒行为的高精度、低延迟分类，为校园边缘端安全监测提供可靠方案。
 
 ## 1. 研究背景与模型定位
 
 跌倒是全球性公共安全与健康威胁，在高校体育教学场景中，学生因激烈对抗、器械失误或场地湿滑引发的意外跌倒频繁发生。此类场景具有**人群密集、运动幅度大、肢体遮挡严重、光照多变**等特点，对检测系统的精度与实时性提出双重挑战。现有视觉方法所采用的逐级下采样骨干在严重遮挡和快速运动下易丢失空间细节，高分辨率表征与低计算开销之间的矛盾仍制约边缘设备的实时高精度检测。
 
-本文提出 **YOLOv13-N-HRNet-DCVN**，以 YOLOv13-N 为基线，通过定制化 HRNet 并行高分辨率骨干全程维护空间细节，并嵌入 DCVN（Dense Context-aware Voting Network）多尺度卷积注意力增强模块强化遮挡场景判别能力，最终在自建大学体育课跌倒数据集（SPFD-4213）上实现 **99.82% mAP@50、13.35 M 参数量、2.0 ms 单帧推理**的综合性能，为边缘计算设备在校园安全监测中的高可靠部署提供有效方案。
+本文提出 **DHRNet-YOLOv13**，以 YOLOv13-N 为基线，通过定制化 HRNet 并行高分辨率骨干全程维护空间细节，并嵌入 DCVN（Dense Context-aware Voting Network）多尺度卷积注意力增强模块强化遮挡场景判别能力，最终在自建大学体育课跌倒数据集（SPFD-4213）上实现 **99.82% mAP@50、13.35 M 参数量、2.0 ms 单帧推理**的综合性能，为边缘计算设备在校园安全监测中的高可靠部署提供有效方案。
 
 ## 2. 核心创新点
 
@@ -162,7 +162,7 @@ pip install pyyaml~=6.0.2 seaborn~=0.13.2
 | YOLOv5-SIoU-SimAM（Wu 等）      | 2023     | 96.70%     |
 | FIDC-YOLOv5（Wang 等）          | 2026     | 97.00%     |
 | YOLOv8m（Pereira 等）           | 2024     | 97.10%     |
-| **YOLOv13-N-HRNet-DCVN（本文）** | **2026** | **99.82%** |
+| **DHRNet-YOLOv13（本文）** | **2026** | **99.82%** |
 
 > 注：相较自建数据集上 mAP 最高的 YOLOv8m 方法，本文模型提升 2.72 个百分点；相较 mAP 最低的改进 YOLOv5s，提升 6.12 个百分点。混淆矩阵分析显示，所提模型对站立与跌倒两类的误判仅 5/7 例，显著低于 YOLOv11（7/8 例）、YOLOv10（8/12 例）与 EfficientDet（10/11 例）。
 
@@ -176,7 +176,7 @@ pip install pyyaml~=6.0.2 seaborn~=0.13.2
 | YOLOv13-N（宽度扩展 0.5）    | ✗     | ✗     | 9.84 M      | 4.5 ms     | 中              |
 | + DCVN                 | ✗     | ✓     | \~14.0 M    | +0.2 ms    | Precision 显著提升 |
 | + HRNet                | ✓     | ✗     | —           | —          | Recall 显著提升    |
-| **+ HRNet + DCVN（最终）** | **✓** | **✓** | **13.35 M** | **2.0 ms** | **99.82%**     |
+| **DHRNet-YOLOv13（最终）** | **✓** | **✓** | **13.35 M** | **2.0 ms** | **99.82%**     |
 
 ## 6. 代码使用说明
 
@@ -329,7 +329,7 @@ yolov13n-hrnet-dcvn-fall-detection/
 
 ```
 @article{chen2026fall,
-  title={Context-Aware Deep Learning for Fall Detection of College Students in Physical Education Activities},
+  title={DHRNet-YOLOv13: A Novel Deep Learning Model for Fall Detection in University Physical Education},
   author={Chen, Yicheng and [其他作者，待发表时补充]},
   journal={[期刊名称，待录用后补充]},
   year={2026},
